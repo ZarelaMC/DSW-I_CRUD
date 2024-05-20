@@ -1,0 +1,62 @@
+﻿@model Proyecto.Presentacion.Models.VendedorO
+
+@{
+    ViewData["Title"] = "NuevoVendedor";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<h1>NuevoVendedor</h1>
+
+<h4>VendedorO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NuevoVendedor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nom_ven" class="control-label"></label>
+                <input asp-for="nom_ven" class="form-control" />
+                <span asp-validation-for="nom_ven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ape_ven" class="control-label"></label>
+                <input asp-for="ape_ven" class="form-control" />
+                <span asp-validation-for="ape_ven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sue_ven" class="control-label"></label>
+                <input asp-for="sue_ven" class="form-control" />
+                <span asp-validation-for="sue_ven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fec_ing" class="control-label"></label>
+                <input asp-for="fec_ing" class="form-control" />
+                <span asp-validation-for="fec_ing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ide_dis" class="control-label"></label>
+                @Html.DropDownListFor(model => model.ide_dis, (SelectList)ViewBag.distrito, "(Seleccione distrito)", new {@class="form-select"})
+                <span asp-validation-for="ide_dis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="REGISTRAR" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+<script>
+    if ('@ViewBag.mensaje' != "") {
+        Swal.fire({
+            title: '@ViewBag.mensaje',
+            text: "Para Continuar presione el Boton",
+            icon: "success"
+        });
+    }
+</script>
+

@@ -1,0 +1,77 @@
+﻿@model Proyecto.Presentacion.Models.ClienteO
+
+@{
+    ViewData["Title"] = "RegistrarCliente";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<h1>RegistrarCliente</h1>
+
+<h4>ClienteO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrarCliente" id="formRegistrarCliente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="rso_cli" class="control-label"></label>
+                <input asp-for="rso_cli" class="form-control" />
+                <span asp-validation-for="rso_cli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dir_cli" class="control-label"></label>
+                <input asp-for="dir_cli" class="form-control" />
+                <span asp-validation-for="dir_cli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tlf_cli" class="control-label"></label>
+                <input asp-for="tlf_cli" class="form-control" />
+                <span asp-validation-for="tlf_cli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ruc_cli" class="control-label"></label>
+                <input asp-for="ruc_cli" class="form-control" />
+                <span asp-validation-for="ruc_cli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ide_dis" class="control-label"></label>
+                @Html.DropDownListFor(model => model.ide_dis, (SelectList)ViewBag.distritos, "(Seleccione distrito)", new { @class = "form-select"});
+                <span asp-validation-for="ide_dis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fec_reg" class="control-label"></label>
+                <input asp-for="fec_reg" class="form-control" />
+                <span asp-validation-for="fec_reg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_cli" class="control-label"></label>
+                <input asp-for="con_cli" class="form-control" />
+                <span asp-validation-for="con_cli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    // Mensaje con SweetAlert2
+    if ('@ViewBag.msjConfirmacion' != "") {
+        Swal.fire({
+            title: '@ViewBag.msjConfirmacion',
+            text: "Para Continuar presione el Botón",
+            icon: "success"
+            /**}).then((result) => {
+                if (result.isConfirmed) {
+                    // Resetear el formulario al cerrar la alerta
+                    document.getElementById('formRegistrarCliente').reset();
+                } */
+        });
+    }
+</script>
+
